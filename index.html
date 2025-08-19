@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ConsigDireto — Crédito Consignado</title>
+  <link rel="icon" type="image/png" href="favicon.ico">
+
+  <!-- Tailwind CDN, Otimo framework css, não é recomendado utilizar o cdn em produção, usei aqui só para demonstrar -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            charcoal: "#050506",     // quase preto
+            graphite: "#1e2126",     // cinza escuro
+            steel: "#2b3037",        // cinza médio
+            smoke: "#f6f7f8",        // cinza claro
+            brand: { orange:"#FF8A00", amber:"#FFC04D" } // gradiente laranja
+          },
+          boxShadow: { soft:"0 10px 30px rgba(0,0,0,.12)" },
+          borderRadius: { xl2:"1.25rem" }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <!-- Lordicon -->
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+
+  <style>
+    html,body{scroll-behavior:smooth}
+    /* textura para a seção de benefícios */
+    /* .texture-dots{
+      background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 14px 14px;
+    } */
+  </style>
+</head>
+<body class="bg-smoke text-graphite antialiased">
+
+  <!-- HEADER: preto + glass -->
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-charcoal/90 backdrop-blur-md">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav class="flex h-16 items-center justify-between">
+        <!-- logo -->
+        <a href="#home" class="flex items-center">
+          <img src="https://consigdireto.com.br/logo_fundo_transparente.png" alt="ConsigDireto" class="h-9 w-auto">
+        </a>
+
+        <ul class="hidden md:flex items-center gap-8 font-medium text-white/80">
+          <li><a href="#solucoes" class="hover:text-white">Soluções</a></li>
+          <li><a href="#beneficios" class="hover:text-white">Benefícios</a></li>
+          <li><a href="#rpps" class="hover:text-white">Para RPPS</a></li>
+          <li><a href="#sobre" class="hover:text-white">Sobre</a></li>
+          <li><a href="#contato" class="hover:text-white">Contato</a></li>
+        </ul>
+
+        <div class="hidden md:flex items-center gap-3">
+          <a href="#contato" class="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-charcoal shadow-soft
+             bg-gradient-to-r from-brand-orange to-brand-amber hover:brightness-110">
+            <i class="fa-solid fa-paper-plane"></i> Falar com especialista
+          </a>
+        </div>
+
+        <button id="btnMobile" class="md:hidden rounded-full p-2 text-white ring-1 ring-white/20">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Mobile menu (não é a melhor forma de fazer, mas está ai para efeitos visuais) -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-white/10 bg-charcoal/95 backdrop-blur-md">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3">
+        <ul class="grid gap-2 font-medium text-white">
+          <li><a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="#solucoes">Soluções</a></li>
+          <li><a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="#beneficios">Benefícios</a></li>
+          <li><a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="#rpps">Para RPPS</a></li>
+          <li><a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="#sobre">Sobre</a></li>
+          <li><a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="#contato">Contato</a></li>
+        </ul>
+        <a href="#contato" class="mt-3 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-charcoal
+           bg-gradient-to-r from-brand-orange to-brand-amber shadow-soft">
+          <i class="fa-solid fa-message"></i> Solicitar contato
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="pt-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid items-center gap-10 py-14 lg:grid-cols-2">
+        <div>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold ring-1 ring-black/10">
+            <i class="fa-solid fa-shield-halved text-brand-orange"></i> Consignado para RPPS
+          </span>
+          <h1 class="mt-4 text-4xl font-extrabold text-charcoal sm:text-5xl">
+            Crédito consignado sem fricção. <span class="bg-gradient-to-r from-brand-orange to-brand-amber bg-clip-text text-transparent">Digital, seguro, humano.</span>
+          </h1>
+          <p class="mt-4 max-w-xl text-lg text-steel/80">
+            Jornada 100% digital, taxas competitivas e inadimplência mínima via desconto em folha.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#contato" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-charcoal shadow-soft
+               bg-gradient-to-r from-brand-orange to-brand-amber hover:brightness-110">
+              <i class="fa-solid fa-bolt"></i> Solicitar meu crédito
+            </a>
+            <a href="#solucoes" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 ring-1 ring-black/10 bg-white hover:bg-smoke">
+              <i class="fa-solid fa-circle-info"></i> Saiba Mais
+            </a>
+          </div>
+
+          <div class="mt-8 flex items-center gap-6 text-sm text-steel/80">
+            <span class="inline-flex items-center gap-2"><i class="fa-solid fa-bolt text-brand-orange"></i> Análise rápida</span>
+            <span class="inline-flex items-center gap-2"><i class="fa-solid fa-lock text-brand-orange"></i> Segurança LGPD</span>
+            <span class="inline-flex items-center gap-2"><i class="fa-solid fa-thumbs-up text-brand-orange"></i> Aprovação facilitada</span>
+          </div>
+        </div>
+
+        <!-- Ícone animado (lord icons, otimo fornecedor de icones animados, super recomendo para deixar mais profissional) -->
+        <div class="flex items-center justify-center">
+          <lord-icon
+            src="https://cdn.lordicon.com/jeznmujs.json"
+            trigger="loop"
+            delay="1000"
+            colors="primary:#000000,secondary:#16c72e,tertiary:#ff8a00,quaternary:#ebe6ef"
+            style="width:380px;height:380px">
+          </lord-icon>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUÇÕES -->
+  <section id="solucoes" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="text-3xl font-extrabold text-charcoal">Tudo que seu participante precisa</h2>
+        <p class="mt-3 text-steel/80">Experiência vencedora que reduz custo para a entidade.</p>
+      </div>
+
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-xl bg-white p-6 shadow-soft">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-orange to-brand-amber text-white">
+            <i class="fa-solid fa-laptop"></i>
+          </div>
+          <h3 class="mt-4 font-semibold">Contratação 100% digital</h3>
+          <p class="mt-2 text-sm text-steel/80">Assinatura eletrônica e liberação rápida.</p>
+        </div>
+
+        <div class="rounded-xl bg-white p-6 shadow-soft">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-orange to-brand-amber text-white">
+            <i class="fa-solid fa-sack-dollar"></i>
+          </div>
+          <h3 class="mt-4 font-semibold">Desembolso diário</h3>
+          <p class="mt-2 text-sm text-steel/80">Liquidação em dias úteis sem burocracia.</p>
+        </div>
+
+        <div class="rounded-xl bg-white p-6 shadow-soft">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-orange to-brand-amber text-white">
+            <i class="fa-solid fa-percent"></i>
+          </div>
+          <h3 class="mt-4 font-semibold">Menor custo</h3>
+          <p class="mt-2 text-sm text-steel/80">Mais barato que cheque especial/pessoal.</p>
+        </div>
+
+        <div class="rounded-xl bg-white p-6 shadow-soft">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-orange to-brand-amber text-white">
+            <i class="fa-solid fa-user-group"></i>
+          </div>
+          <h3 class="mt-4 font-semibold">Atendimento humanizado</h3>
+          <p class="mt-2 text-sm text-steel/80">WhatsApp, e-mail, SMS e telefone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS (adicionar uma textura suavizada melhoraria ainda + a estetica pro) -->
+  <section id="beneficios" class="relative py-16">
+    <div class="absolute inset-0 -z-10 bg-charcoal"></div>
+    <div class="absolute inset-0 -z-0 texture-dots opacity-20"></div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-white relative">
+      <div class="grid gap-8 lg:grid-cols-3">
+        <div class="rounded-xl bg-graphite p-8 shadow-soft">
+          <div class="text-3xl"><i class="fa-solid fa-shield text-brand-amber"></i></div>
+          <h3 class="mt-4 text-lg font-semibold">Baixo risco</h3>
+          <p class="mt-2 text-white/70">Desconto em folha minimiza inadimplência e garante previsibilidade.</p>
+        </div>
+        <div class="rounded-xl bg-graphite p-8 shadow-soft">
+          <div class="text-3xl"><i class="fa-solid fa-rocket text-brand-amber"></i></div>
+          <h3 class="mt-4 text-lg font-semibold">Rentabilidade</h3>
+          <p class="mt-2 text-white/70">Retornos estáveis e superiores à renda fixa tradicional.</p>
+        </div>
+        <div class="rounded-xl bg-graphite p-8 shadow-soft">
+          <div class="text-3xl"><i class="fa-solid fa-bullseye text-brand-amber"></i></div>
+          <h3 class="mt-4 text-lg font-semibold">Foco no beneficiário</h3>
+          <p class="mt-2 text-white/70">Servidores, aposentados e pensionistas do RPPS.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RPPS / NÚMEROS -->
+  <section id="rpps" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div>
+          <h2 class="text-3xl font-extrabold text-charcoal">Para RPPS: eficiência, transparência e inovação</h2>
+          <p class="mt-3 text-steel/80">Gestão simplificada, auditoria completa e acompanhamento em tempo real.</p>
+          <ul class="mt-6 space-y-3 text-steel/90">
+            <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-brand-orange mt-1"></i> Integração segura com folha.</li>
+            <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-brand-orange mt-1"></i> Trilha de auditoria e LGPD.</li>
+            <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-brand-orange mt-1"></i> Portal do participante + backoffice.</li>
+          </ul>
+          <a href="#contato" class="mt-6 inline-flex items-center gap-2 rounded-xl px-6 py-3 text-charcoal
+             bg-gradient-to-r from-brand-orange to-brand-amber shadow-soft">
+            <i class="fa-solid fa-handshake"></i> Apresentar ao conselho
+          </a>
+        </div>
+
+        <div class="rounded-xl bg-white p-6 shadow-soft">
+          <img src="https://euromseguros.com.br/adm/seguros/6.jpg" class="w-full rounded-xl object-cover" alt="">
+          <div class="mt-6 grid grid-cols-3 gap-4 text-center">
+            <div class="rounded-xl bg-charcoal p-4 text-white">
+              <div class="text-2xl font-extrabold">169,4%</div>
+              <div class="text-xs opacity-80">Conservador</div>
+            </div>
+            <div class="rounded-xl bg-charcoal p-4 text-white">
+              <div class="text-2xl font-extrabold">144,1%</div>
+              <div class="text-xs opacity-80">Moderado</div>
+            </div>
+            <div class="rounded-xl bg-charcoal p-4 text-white">
+              <div class="text-2xl font-extrabold">122,9%</div>
+              <div class="text-xs opacity-80">Agressivo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-xl p-10 text-center text-charcoal shadow-soft bg-gradient-to-r from-brand-orange to-brand-amber">
+        <h3 class="text-2xl font-extrabold">Pronto para acelerar seu consignado?</h3>
+        <p class="mt-2 opacity-90">Transparência de ponta a ponta e experiência encantadora.</p>
+        <a href="#contato" class="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 hover:bg-smoke">
+          <i class="fa-solid fa-bolt"></i> Solicitar agora
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-2">
+        <div>
+          <h2 class="text-3xl font-extrabold text-charcoal">Envie sua mensagem</h2>
+          <p class="mt-2 text-steel/80">Um especialista responde em até 4 horas úteis.</p>
+          <div class="mt-6 space-y-3 text-steel/90">
+            <p><i class="fa-solid fa-envelope text-brand-orange"></i> suporte@consigdireto.com.br</p>
+            <p><i class="fa-brands fa-whatsapp text-brand-orange"></i> (11) 97369-1721</p>
+            <p><i class="fa-solid fa-location-dot text-brand-orange"></i> Brasil • Atendimento nacional</p>
+          </div>
+        </div>
+        <form class="rounded-2xl bg-white p-6 shadow-soft">
+          <div class="grid gap-4">
+            <div>
+              <label class="mb-1 block text-sm font-medium">Nome</label>
+              <input class="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:ring-4 ring-brand-amber/30" placeholder="Seu nome" required>
+            </div>
+            <div>
+              <label class="mb-1 block text-sm font-medium">Email</label>
+              <input type="email" class="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:ring-4 ring-brand-amber/30" placeholder="seu@email.com" required>
+            </div>
+            <div>
+              <label class="mb-1 block text-sm font-medium">Mensagem</label>
+              <textarea rows="5" class="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:ring-4 ring-brand-amber/30" placeholder="Solicite seu crédito consignado..."></textarea>
+            </div>
+            <button class="mt-2 inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-charcoal
+                           bg-gradient-to-r from-brand-orange to-brand-amber shadow-soft">
+              <i class="fa-solid fa-paper-plane"></i> Enviar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="py-16 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 md:grid-cols-2">
+        <div>
+          <h2 class="text-3xl font-extrabold text-charcoal">Sobre a ConsigDireto</h2>
+          <p class="mt-3 text-steel/80">
+            Especialistas em crédito consignado para RPPS. Segurança, tecnologia e atendimento humano para entregar previsibilidade à entidade e experiência top ao participante.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span class="inline-flex items-center gap-2 rounded-full bg-smoke px-4 py-2 text-sm ring-1 ring-black/5">
+              <i class="fa-solid fa-lock text-brand-orange"></i> LGPD First
+            </span>
+            <span class="inline-flex items-center gap-2 rounded-full bg-smoke px-4 py-2 text-sm ring-1 ring-black/5">
+              <i class="fa-solid fa-star text-brand-orange"></i> NPS Alto
+            </span>
+          </div>
+        </div>
+        <div class="rounded-2xl bg-white p-2 shadow-soft">
+          <img src="https://www.capaobonitodosul.rs.gov.br/wp-content/uploads/2019/10/REFIS.jpg" class="w-full rounded-xl object-cover" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal text-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid gap-10 md:grid-cols-4">
+        <div>
+          <a href="#home" class="inline-flex items-center">
+            <img src="http://consigdireto.com.br/logo_fundo_transparente.png" class="h-10 w-auto" alt="ConsigDireto">
+          </a>
+          <p class="mt-4 text-sm text-white/70">Crédito consignado simples, seguro e humano.</p>
+          <div class="mt-4 flex gap-3">
+            <a href="#" class="rounded-full bg-white/10 p-2 hover:bg-white/20"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="rounded-full bg-white/10 p-2 hover:bg-white/20"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="rounded-full bg-white/10 p-2 hover:bg-white/20"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-semibold">Soluções</h4>
+          <ul class="mt-4 space-y-2 text-white/70">
+            <li><a href="#solucoes" class="hover:text-white">Jornada Digital</a></li>
+            <li><a href="#beneficios" class="hover:text-white">Rentabilidade</a></li>
+            <li><a href="#rpps" class="hover:text-white">Gestão RPPS</a></li>
+            <li><a href="#contato" class="hover:text-white">Atendimento</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold">Recursos</h4>
+          <ul class="mt-4 space-y-2 text-white/70">
+            <li><a href="#" class="hover:text-white">Política de Privacidade</a></li>
+            <li><a href="#" class="hover:text-white">Termos de Uso</a></li>
+            <li><a href="#" class="hover:text-white">FAQ</a></li>
+            <li><a href="#" class="hover:text-white">Status</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold">Contato</h4>
+          <ul class="mt-4 space-y-2 text-white/70">
+            <li><i class="fa-solid fa-envelope mr-2 text-brand-amber"></i> contato@consigdireto.com.br</li>
+            <li><i class="fa-brands fa-whatsapp mr-2 text-brand-amber"></i> (11) 97369-1721</li>
+            <li><i class="fa-solid fa-location-dot mr-2 text-brand-amber"></i> Brasil</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-10 rounded-2xl bg-graphite p-5 text-center text-sm text-white/70">
+        <p>ConsigDireto © 2025 • Todos os direitos reservados • Feito no Brasil</p>
+      </div>
+    </div>
+
+    <!-- Botão flutuante Whats -->
+    <a href="https://wa.me/5511973691721"
+       class="fixed bottom-6 right-6 inline-flex items-center justify-center rounded-full p-4 shadow-soft text-charcoal
+              bg-gradient-to-br from-brand-orange to-brand-amber hover:brightness-110">
+      <i class="fa-brands fa-whatsapp text-2xl"></i>
+    </a>
+  </footer>
+
+  <!-- JS: menu mobile / apenas para exemplo visual, não recomendado para produção -->
+  <script>
+    const btn = document.getElementById('btnMobile');
+    const menu = document.getElementById('mobileMenu');
+    btn?.addEventListener('click', () => menu.classList.toggle('hidden'));
+  </script>
+</body>
+</html>
